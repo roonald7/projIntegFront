@@ -37,7 +37,7 @@ public class MainScreenController {
 	
 	private App mainApp;
 	
-	private MedidorService medidorService = new MedidorService(); 
+	private MedidorService medidorService = new MedidorService();
 	 
 	public void setMain(App mainApp) {
 		this.mainApp = mainApp;
@@ -51,7 +51,10 @@ public class MainScreenController {
 	
 	@FXML
     void refreshDataBase(ActionEvent event) {
-		medidorData = medidorService.findAll();
+		paneMedidor.setExpanded(false);
+		comboBoxLinha.getSelectionModel().clearSelection();
+		paneMedidor.setDisable(true);
+		loadScreen();
     }
 	
 	@FXML
@@ -61,7 +64,8 @@ public class MainScreenController {
 		
 	 
 	public void loadScreen() {
-		paneMedidor.setDisable(true);	
+			
+		linhaData.clear();
 		
 		medidorData = medidorService.findAll();
 		
@@ -76,6 +80,7 @@ public class MainScreenController {
 	 
 	public void startScreen() {
 		loadScreen();
+		paneMedidor.setDisable(true);
 	}
 	
 	public void loadTreeView(String optModelo) {
