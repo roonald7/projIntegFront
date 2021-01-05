@@ -50,6 +50,11 @@ public class MainScreenController {
     }
 	
 	@FXML
+    void refreshDataBase(ActionEvent event) {
+		medidorData = medidorService.findAll();
+    }
+	
+	@FXML
 	public void initialize() {
 		startScreen();
 	}
