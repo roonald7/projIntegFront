@@ -79,7 +79,7 @@ xmlns="http://maven.apache.org/POM/4.0.0">
 	</plugins>
   
   </build>
-  <!-- TESTE DEPENDENCIES EXE   */ -->
+  
   <dependencies>
   	<dependency>
 		<groupId>org.junit.jupiter</groupId>

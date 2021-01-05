@@ -2,9 +2,6 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 [Setup]
-; NOTE: The value of AppId uniquely identifies this application.
-; Do not use the same AppId value in installers for other applications.
-; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{application}}
 AppName=projIntegracao
 AppVersion=1.0
@@ -24,7 +21,8 @@ DefaultGroupName=Eletra Energy Solutions
 ;Optional License
 LicenseFile=
 ;WinXP or above
-OutputBaseFilename=setupMinVersion=0,5.1 
+OutputBaseFilename=setup
+MinVersion=0,5.1 
 OutputBaseFilename=projIntegracao-1.0
 Compression=lzma
 SolidCompression=yes
@@ -58,7 +56,7 @@ Name: "{commondesktop}\projIntegracao"; Filename: "{app}\projIntegracao.exe"; Ic
 Filename: "{localappdata}\projIntegracao\unins000.exe"; Flags: skipifdoesntexist           
 Filename: "{app}\projIntegracao.exe"; Parameters: "-Xappcds:generatecache"; Check: returnFalse()
 Filename: "{app}\projIntegracao.exe"; Description: "{cm:LaunchProgram,projIntegracao}"; Flags: nowait postinstall skipifsilent; Check: returnTrue()
-Filename: "{app}\projIntegracao.exe"; Parameters: "-install -svcName ""projIntegracao"" -svcDesc ""DeviceConfig"" -mainExe ""projIntegracao.exe""  "; Check: returnFalse()
+Filename: "{app}\projIntegracao.exe"; Parameters: "-install -svcName ""projIntegracao"" -svcDesc ""projIntegracao"" -mainExe ""projIntegracao.exe""  "; Check: returnFalse()
                   
 [InstallDelete]  
 Type: files; Name: "{commondesktop}\projIntegracao.lnk"; 
