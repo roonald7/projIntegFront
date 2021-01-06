@@ -20,10 +20,10 @@ public class MainScreenController {
     private TitledPane paneLinha;
 	
 	@FXML
-	private ComboBox<String> comboBoxLinha;
+	public ComboBox<String> comboBoxLinha;
 
 	@FXML
-	private TitledPane paneMedidor;
+	public TitledPane paneMedidor;
 	
 	@FXML
 	private TreeView<String> treeViewModelo;
@@ -37,7 +37,7 @@ public class MainScreenController {
 	
 	private App mainApp;
 	
-	private MedidorService medidorService = new MedidorService();
+	public MedidorService medidorService = new MedidorService();
 	 
 	public void setMain(App mainApp) {
 		this.mainApp = mainApp;
@@ -50,7 +50,7 @@ public class MainScreenController {
     }
 	
 	@FXML
-    void refreshDataBase(ActionEvent event) {
+    public void refreshDataBase(ActionEvent event) {
 		paneMedidor.setExpanded(false);
 		comboBoxLinha.getSelectionModel().clearSelection();
 		paneMedidor.setDisable(true);
@@ -59,7 +59,7 @@ public class MainScreenController {
 	
 	@FXML
 	public void initialize() {
-		startScreen();
+		startScreen();		
 	}
 		
 	 
@@ -77,7 +77,7 @@ public class MainScreenController {
 		}		 
 		comboBoxLinha.setItems(FXCollections.observableArrayList(linhaData));	
 	}
-	 
+	 	
 	public void startScreen() {
 		loadScreen();
 		paneMedidor.setDisable(true);
