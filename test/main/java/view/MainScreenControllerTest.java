@@ -3,6 +3,7 @@ package main.java.view;
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+import org.powermock.api.mockito.PowerMockito;
 import org.testfx.framework.junit.ApplicationTest;
 
 import javafx.event.ActionEvent;
@@ -41,18 +42,24 @@ public class MainScreenControllerTest extends ApplicationTest{
 	public void testLoadScreen2() {
 		msc.comboBoxLinha = new ComboBox<String>();
 		
+		
+		
 		msc.loadScreen();
 		
 		assertEquals(3, msc.linhaData.size());
 	}
 	
-	/*@Test
-	public void testRefreshDataBase() {
-		ActionEvent e = null;
+	@Test
+	public void testRefreshDataBase() {		
 		
-		msc.refreshDataBase(e);
+		msc.comboBoxLinha = new ComboBox<String>();
+		msc.paneMedidor = new TitledPane();
+		
+		PowerMockito.doNothing().when(msc).loadScreen();
+
+		msc.refreshDataBase();
 		
 		verify(msc, times(1)).loadScreen();
-	}*/
+	}
 
 }

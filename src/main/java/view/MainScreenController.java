@@ -44,13 +44,13 @@ public class MainScreenController {
 	}
 	
 	@FXML
-    void lineOptionSelect(ActionEvent event) {
+    void lineOptionSelect() {
 		String optSel = comboBoxLinha.getSelectionModel().getSelectedItem().toString();
 		loadTreeView(optSel);
     }
 	
 	@FXML
-    public void refreshDataBase(ActionEvent event) {
+    public void refreshDataBase() {
 		paneMedidor.setExpanded(false);
 		comboBoxLinha.getSelectionModel().clearSelection();
 		paneMedidor.setDisable(true);
