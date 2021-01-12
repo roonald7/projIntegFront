@@ -14,12 +14,14 @@ import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+import java.io.IOException;
+
 public class MainScreenControllerTest extends ApplicationTest{
 	
 	public MainScreenController msc = spy(MainScreenController.class);
 	
 	@Test
-	public void testInitialize() {
+	public void testInitialize() throws IOException {
 		msc.comboBoxLinha = new ComboBox<String>();
 		
 		msc.paneMedidor = new TitledPane();
@@ -29,7 +31,7 @@ public class MainScreenControllerTest extends ApplicationTest{
 	}
 		
 	@Test
-	public void testLoadScreen1() {
+	public void testLoadScreen1() throws IOException {
 		msc.comboBoxLinha = new ComboBox<String>();
 		
 		msc.loadScreen();
@@ -39,7 +41,7 @@ public class MainScreenControllerTest extends ApplicationTest{
 	}
 	
 	@Test
-	public void testLoadScreen2() {
+	public void testLoadScreen2() throws IOException {
 		msc.comboBoxLinha = new ComboBox<String>();
 		
 		
@@ -50,7 +52,7 @@ public class MainScreenControllerTest extends ApplicationTest{
 	}
 	
 	@Test
-	public void testRefreshDataBase() {		
+	public void testRefreshDataBase() throws IOException {		
 		
 		msc.comboBoxLinha = new ComboBox<String>();
 		msc.paneMedidor = new TitledPane();

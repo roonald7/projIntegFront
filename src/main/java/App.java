@@ -1,12 +1,14 @@
 package main.java;
 
 import java.io.IOException;
+import java.util.List;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
 import main.java.view.MainScreenController;
 
 public class App extends Application {
@@ -17,7 +19,7 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
-		this.primaryStage.setTitle("PROJECT 3");
+		this.primaryStage.setTitle("INTEGRATION PROJECT");
 		
 		loadMainScreen();
 	}
@@ -41,6 +43,7 @@ public class App extends Application {
 	}
 
 	public static void main(String[] args) {
+		
 		launch(args);
 		System.exit(0);
 	}

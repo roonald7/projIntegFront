@@ -1,11 +1,10 @@
 package main.java.view;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TitledPane;
@@ -13,7 +12,8 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import main.java.App;
 import main.java.entity.Medidor;
-import main.java.service.MedidorService;
+import main.java.utils.HttpConnectionMethods;
+
 
 public class MainScreenController {
 	@FXML
@@ -33,11 +33,12 @@ public class MainScreenController {
 	public int nLinha = 0;
 	public int nCategoria = 0;
 	
-	private List<Medidor> medidorData;
+	private List<Medidor> medidorData = null;
+	
+	private HttpConnectionMethods httpConn = new HttpConnectionMethods();
 	
 	private App mainApp;
-	
-	public MedidorService medidorService = new MedidorService();
+
 	 
 	public void setMain(App mainApp) {
 		this.mainApp = mainApp;
@@ -50,7 +51,7 @@ public class MainScreenController {
     }
 	
 	@FXML
-    public void refreshDataBase() {
+    public void refreshDataBase() throws IOException {
 		paneMedidor.setExpanded(false);
 		comboBoxLinha.getSelectionModel().clearSelection();
 		paneMedidor.setDisable(true);
@@ -58,27 +59,27 @@ public class MainScreenController {
     }
 	
 	@FXML
-	public void initialize() {
+	public void initialize() throws IOException {
 		startScreen();		
 	}
 		
 	 
-	public void loadScreen() {
+	public void loadScreen() throws IOException {
 			
 		linhaData.clear();
 		
-		medidorData = medidorService.findAll();
-		
+		medidorData = httpConn.sendGET();
+
 		for(Medidor medidorA : medidorData) {
 			if(!linhaData.contains(medidorA.getLinha())) {			
 				linhaData.add(medidorA.getLinha());
 				nLinha++;
 			}
 		}		 
-		comboBoxLinha.setItems(FXCollections.observableArrayList(linhaData));	
+		comboBoxLinha.setItems(FXCollections.observableArrayList(linhaData));
 	}
 	 	
-	public void startScreen() {
+	public void startScreen() throws IOException {
 		loadScreen();
 		paneMedidor.setDisable(true);
 	}
