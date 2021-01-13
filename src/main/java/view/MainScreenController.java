@@ -28,6 +28,7 @@ public class MainScreenController {
 	@FXML
 	private TreeView<String> treeViewModelo;
 	
+	HttpConnectionMethods httpConn = new HttpConnectionMethods();
 	public List<String> linhaData = new ArrayList<String>();
 	
 	public int nLinha = 0;
