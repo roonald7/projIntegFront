@@ -11,8 +11,8 @@ import javafx.scene.control.TitledPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import main.java.App;
-import main.java.entity.Medidor;
-import main.java.utils.HttpConnectionMethods;
+import main.java.entity.MedidorJson;
+import main.java.util.HttpConnectionMethods;
 
 
 public class MainScreenController {
@@ -33,9 +33,9 @@ public class MainScreenController {
 	public int nLinha = 0;
 	public int nCategoria = 0;
 	
-	private List<Medidor> medidorData = null;
+	private List<MedidorJson> medidorData = null;
 	
-	private HttpConnectionMethods httpConn = new HttpConnectionMethods();
+	HttpConnectionMethods httpConn = new HttpConnectionMethods();
 	 
 	public void setMain(App mainApp) {
 	}
@@ -65,8 +65,8 @@ public class MainScreenController {
 		linhaData.clear();
 		
 		medidorData = httpConn.sendGET();
-
-		for(Medidor medidorA : medidorData) {
+		
+		for(MedidorJson medidorA : medidorData) {
 			if(!linhaData.contains(medidorA.getLinha())) {			
 				linhaData.add(medidorA.getLinha());
 				nLinha++;
@@ -90,7 +90,7 @@ public class MainScreenController {
 		
 		List<String> categoriaData = new ArrayList<String>();		
 				
-		for(Medidor medidorA : medidorData) {
+		for(MedidorJson medidorA : medidorData) {
 			if(medidorA.getLinha().equals(optModelo)) {
 				
 				if(!categoriaData.contains(medidorA.getCategoria())) {
