@@ -1,40 +1,54 @@
-<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
-https://maven.apache.org/xsd/maven-4.0.0.xsd" 
-xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-xmlns="http://maven.apache.org/POM/4.0.0">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.energy.eletra</groupId>
-  <artifactId>projIntegFront</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
-  <properties>
-  	<maven.compiler.source>1.8</maven.compiler.source>
-  	<maven.compiler.target>1.8</maven.compiler.target>
-  </properties>
- 
-  
-  <build>
-  	<sourceDirectory>src</sourceDirectory>
-	<testSourceDirectory>test</testSourceDirectory>
-	<resources>
-		<resource>
-			<directory>src</directory>
-			<excludes>
-			<exclude>**/*.java</exclude>
-			</excludes>
-		</resource>
-		<resource>
-			<directory>libs</directory>
-			<excludes>
-				<exclude>**/*.java</exclude>
-			</excludes>
-		</resource>
-		<resource>
-			<directory>src/resources/bundles</directory>
-		</resource>
-	</resources>
-	<plugins>
-		<plugin>
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+	https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.energy.eletra</groupId>
+	<artifactId>projIntegFront</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
+		<java.version>1.8</java.version>
+	</properties>
+
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<testSourceDirectory>test</testSourceDirectory>
+		<resources>
+			<resource>
+				<directory>src</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>libs</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+				</excludes>
+			</resource>
+			<resource>
+				<directory>src/resources/bundles</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+			   <groupId>org.apache.maven.plugins</groupId>
+	           <artifactId>maven-compiler-plugin</artifactId>
+	           <version>3.5.1</version>
+	           <configuration>
+	               <source>1.8</source>
+	               <target>1.8</target>
+	           </configuration>
+       		</plugin>
+		
+			<plugin>
 				<groupId>com.zenjava</groupId>
 				<artifactId>javafx-maven-plugin</artifactId>
 				<version>8.1.4</version>
@@ -42,7 +56,7 @@ xmlns="http://maven.apache.org/POM/4.0.0">
 					<dependency>
 						<groupId>javafx-packager</groupId>
 						<artifactId>javafx-packager</artifactId>
-	
+
 						<version>1.8.0_20</version>
 						<scope>system</scope>
 						<systemPath>${java.home}/../lib/ant-javafx.jar</systemPath>
@@ -62,53 +76,88 @@ xmlns="http://maven.apache.org/POM/4.0.0">
 						<id>create-jfxjar</id>
 						<phase>package</phase>
 						<goals>
-						<goal>build-jar</goal>
+							<goal>build-jar</goal>
 						</goals>
 					</execution>
 					<execution>
 						<id>create-native</id>
 						<phase>package</phase>
 						<goals>
-						<goal>build-native</goal>
+							<goal>build-native</goal>
 						</goals>
 					</execution>
 				</executions>
 			</plugin>
-	
-	
-	</plugins>
-  
-  </build>
-  <!-- TESTE DEPENDENCIES EXE   */ -->
-  <dependencies>
-  	<dependency>
-		<groupId>org.junit.jupiter</groupId>
-		<artifactId>junit-jupiter-engine</artifactId>
-		<version>5.4.2</version>
-		<scope>test</scope>
-	</dependency>
 
-	<dependency>
-		<groupId>org.mockito</groupId>
-		<artifactId>mockito-all</artifactId>
-		<version>1.10.19</version>
-	</dependency>
-	<dependency>
-		<groupId>org.powermock</groupId>
-		<artifactId>powermock-api-mockito</artifactId>
-		<version>1.6.6</version>
-	</dependency>
-	<dependency>
-		<groupId>org.powermock</groupId>
-		<artifactId>powermock-module-junit4</artifactId>
-		<version>1.6.6</version>
-	</dependency>
-  
-  	<dependency>
-  		<groupId>com.energy.eletra</groupId>
-		<artifactId>projIntegBack</artifactId>
-	    <version>0.0.1-SNAPSHOT</version> 	
-  	</dependency>
-  </dependencies>
-  
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.1</version>
+				<dependencies>
+					<dependency>
+						<groupId>org.apache.maven.surefire</groupId>
+						<artifactId>surefire-junit4</artifactId>
+						<version>2.22.0</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+
+
+		</plugins>
+
+	</build>
+	<!-- TESTE DEPENDENCIES EXE */ -->
+	<dependencies>
+		<dependency>
+		    <groupId>com.google.code.gson</groupId>
+		    <artifactId>gson</artifactId>
+		    <version>2.8.6</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.10.19</version>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.testfx</groupId>
+			<artifactId>testfx-core</artifactId>
+			<version>4.0.14-alpha</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.testfx</groupId>
+			<artifactId>testfx-junit</artifactId>
+			<version>4.0.14-alpha</version>
+			<scope>test</scope>
+		</dependency>
+		
+
+		<!-- dependency>
+			<groupId>com.energy.eletra</groupId>
+			<artifactId>ProjIntegApi</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency-->
+		
+	</dependencies>
+
 </project>	

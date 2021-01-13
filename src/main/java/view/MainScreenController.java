@@ -1,29 +1,29 @@
 package main.java.view;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import main.java.App;
-import main.java.entity.Medidor;
-import main.java.service.MedidorService;
+import main.java.entity.MedidorJson;
+import main.java.util.HttpConnectionMethods;
+
 
 public class MainScreenController {
 	@FXML
     private TitledPane paneLinha;
 	
 	@FXML
-	private ComboBox<String> comboBoxLinha;
+	public ComboBox<String> comboBoxLinha;
 
 	@FXML
-	private TitledPane paneMedidor;
+	public TitledPane paneMedidor;
 	
 	@FXML
 	private TreeView<String> treeViewModelo;
@@ -33,21 +33,20 @@ public class MainScreenController {
 	public int nLinha = 0;
 	public int nCategoria = 0;
 	
-	private List<Medidor> medidorData;
+	private List<MedidorJson> medidorData = null;
 	
-	private MedidorService medidorService = new MedidorService();
 	 
 	public void setMain(App mainApp) {
 	}
 	
 	@FXML
-    void lineOptionSelect(ActionEvent event) {
+    void lineOptionSelect() {
 		String optSel = comboBoxLinha.getSelectionModel().getSelectedItem().toString();
 		loadTreeView(optSel);
     }
 	
 	@FXML
-    void refreshDataBase(ActionEvent event) {
+    public void refreshDataBase() throws IOException {
 		paneMedidor.setExpanded(false);
 		comboBoxLinha.getSelectionModel().clearSelection();
 		paneMedidor.setDisable(true);
@@ -55,27 +54,27 @@ public class MainScreenController {
     }
 	
 	@FXML
-	public void initialize() {
-		startScreen();
+	public void initialize() throws IOException {
+		startScreen();		
 	}
 		
 	 
-	public void loadScreen() {
+	public void loadScreen() throws IOException {
 			
 		linhaData.clear();
 		
-		medidorData = medidorService.findAll();
+		medidorData = httpConn.sendGET();
 		
-		for(Medidor medidorA : medidorData) {
+		for(MedidorJson medidorA : medidorData) {
 			if(!linhaData.contains(medidorA.getLinha())) {			
 				linhaData.add(medidorA.getLinha());
 				nLinha++;
 			}
 		}		 
-		comboBoxLinha.setItems(FXCollections.observableArrayList(linhaData));	
+		comboBoxLinha.setItems(FXCollections.observableArrayList(linhaData));
 	}
-	 
-	public void startScreen() {
+	 	
+	public void startScreen() throws IOException {
 		loadScreen();
 		paneMedidor.setDisable(true);
 	}
@@ -90,7 +89,7 @@ public class MainScreenController {
 		
 		List<String> categoriaData = new ArrayList<String>();		
 				
-		for(Medidor medidorA : medidorData) {
+		for(MedidorJson medidorA : medidorData) {
 			if(medidorA.getLinha().equals(optModelo)) {
 				
 				if(!categoriaData.contains(medidorA.getCategoria())) {
