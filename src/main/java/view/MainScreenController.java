@@ -17,13 +17,13 @@ import main.java.util.HttpConnectionMethods;
 
 public class MainScreenController {
 	@FXML
-    private TitledPane paneLinha;
+    public TitledPane paneLinha;
 	
 	@FXML
 	public ComboBox<String> comboBoxLinha;
 
 	@FXML
-	public TitledPane paneMedidor;
+	public TitledPane paneModelo;
 	
 	@FXML
 	private TreeView<String> treeViewModelo;
@@ -42,15 +42,14 @@ public class MainScreenController {
 	
 	@FXML
     void lineOptionSelect() {
-		String optSel = comboBoxLinha.getSelectionModel().getSelectedItem().toString();
-		loadTreeView(optSel);
+		if(comboBoxLinha.getSelectionModel().getSelectedItem() != null)
+			loadTreeView();
     }
 	
 	@FXML
     public void refreshDataBase() throws IOException {
-		paneMedidor.setExpanded(false);
-		comboBoxLinha.getSelectionModel().clearSelection();
-		paneMedidor.setDisable(true);
+		paneLinha.setExpanded(false);
+		comboBoxLinha.getSelectionModel().select(null);
 		loadScreen();
     }
 	
@@ -61,7 +60,8 @@ public class MainScreenController {
 		
 	 
 	public void loadScreen() throws IOException {
-			
+		paneModelo.setExpanded(false);
+		paneModelo.setDisable(true);
 		linhaData.clear();
 		
 		medidorData = httpConn.sendGET();
@@ -77,21 +77,20 @@ public class MainScreenController {
 	 	
 	public void startScreen() throws IOException {
 		loadScreen();
-		paneMedidor.setDisable(true);
+		paneModelo.setDisable(true);
 	}
 	
-	public void loadTreeView(String optModelo) {
-		paneMedidor.setDisable(false);
+	public void loadTreeView() {
+		paneModelo.setDisable(false);
 		
 		nCategoria = 0;
-		
-		TreeItem<String> treeViewRoot = new TreeItem<String>(optModelo);
+		TreeItem<String> treeViewRoot = new TreeItem<String>(comboBoxLinha.getSelectionModel().getSelectedItem().toString());
 		treeViewModelo.setRoot(treeViewRoot);
 		
 		List<String> categoriaData = new ArrayList<String>();		
 				
 		for(MedidorJson medidorA : medidorData) {
-			if(medidorA.getLinha().equals(optModelo)) {
+			if(medidorA.getLinha().equals(comboBoxLinha.getSelectionModel().getSelectedItem().toString())) {
 				
 				if(!categoriaData.contains(medidorA.getCategoria())) {
 					categoriaData.add(medidorA.getCategoria());

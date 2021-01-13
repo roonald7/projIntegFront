@@ -24,7 +24,7 @@ public class MainScreenControllerTest extends ApplicationTest{
 	public void testInitialize() throws IOException {
 		msc.comboBoxLinha = new ComboBox<String>();
 		
-		msc.paneMedidor = new TitledPane();
+		msc.paneModelo = new TitledPane();
 		
 		msc.initialize();
 		verify(msc, times(1)).startScreen();
@@ -33,6 +33,8 @@ public class MainScreenControllerTest extends ApplicationTest{
 	@Test
 	public void testLoadScreen1() throws IOException {
 		msc.comboBoxLinha = new ComboBox<String>();
+		msc.paneModelo = new TitledPane();
+		msc.paneLinha = new TitledPane();
 		
 		msc.loadScreen();
 		
@@ -43,8 +45,7 @@ public class MainScreenControllerTest extends ApplicationTest{
 	@Test
 	public void testLoadScreen2() throws IOException {
 		msc.comboBoxLinha = new ComboBox<String>();
-		
-		
+		msc.paneModelo = new TitledPane();
 		
 		msc.loadScreen();
 		
@@ -55,7 +56,8 @@ public class MainScreenControllerTest extends ApplicationTest{
 	public void testRefreshDataBase() throws IOException {		
 		
 		msc.comboBoxLinha = new ComboBox<String>();
-		msc.paneMedidor = new TitledPane();
+		msc.paneModelo = new TitledPane();
+		msc.paneLinha = new TitledPane();
 		
 		PowerMockito.doNothing().when(msc).loadScreen();
 
