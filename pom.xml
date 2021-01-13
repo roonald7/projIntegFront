@@ -130,18 +130,13 @@ https://maven.apache.org/xsd/maven-4.0.0.xsd"
 			<version>4.0.14-alpha</version>
 			<scope>test</scope>
 		</dependency>
-		
-		<dependency>
-		    <groupId>com.google.code.gson</groupId>
-		    <artifactId>gson</artifactId>
-		    <version>2.8.6</version>
-		</dependency>
 
 		<dependency>
 			<groupId>com.energy.eletra</groupId>
 			<artifactId>ProjIntegApi</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
 	</dependencies>
 
 </project>	

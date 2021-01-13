@@ -36,12 +36,8 @@ public class MainScreenController {
 	private List<Medidor> medidorData = null;
 	
 	private HttpConnectionMethods httpConn = new HttpConnectionMethods();
-	
-	private App mainApp;
-
 	 
 	public void setMain(App mainApp) {
-		this.mainApp = mainApp;
 	}
 	
 	@FXML
