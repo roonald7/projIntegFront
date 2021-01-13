@@ -35,12 +35,9 @@ public class MainScreenController {
 	
 	private List<Medidor> medidorData;
 	
-	private App mainApp;
-	
 	private MedidorService medidorService = new MedidorService();
 	 
 	public void setMain(App mainApp) {
-		this.mainApp = mainApp;
 	}
 	
 	@FXML
