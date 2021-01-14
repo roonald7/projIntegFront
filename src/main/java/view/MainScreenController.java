@@ -62,6 +62,7 @@ public class MainScreenController {
 	public void loadScreen() throws IOException {
 		paneModelo.setExpanded(false);
 		paneModelo.setDisable(true);
+		
 		linhaData.clear();
 		
 		medidorData = httpConn.sendGET();
@@ -77,7 +78,6 @@ public class MainScreenController {
 	 	
 	public void startScreen() throws IOException {
 		loadScreen();
-		paneModelo.setDisable(true);
 	}
 	
 	public void loadTreeView() {
