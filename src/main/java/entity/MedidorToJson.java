@@ -1,27 +1,16 @@
 package main.java.entity;
 
-public class MedidorJson {
-		
-	private long id;
-	
+public class MedidorToJson {
 	private String linha;
 	
 	private String modelo;
 	
 	private String categoria;
 
-	public MedidorJson(String linha, String modelo, String categoria) {
+	public MedidorToJson(String linha, String modelo, String categoria) {
 		this.linha = linha;
 		this.modelo = modelo;
 		this.categoria = categoria;
-	}
-
-	public long getId() {
-		return id;
-	}
-
-	public void setId(long id) {
-		this.id = id;
 	}
 
 	public String getLinha() {
@@ -47,11 +36,8 @@ public class MedidorJson {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
-
-	@Override
-	public String toString() {
-		return "Medidor [id=" + id + ", linha=" + linha + ", modelo=" + modelo + ", categoria=" + categoria + "]";
-	}
+	
+	
+	
 	
 }
-

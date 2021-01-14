@@ -12,6 +12,7 @@ import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
 import main.java.App;
 import main.java.entity.MedidorJson;
+import main.java.entity.MedidorToJson;
 import main.java.util.HttpConnectionMethods;
 
 
@@ -26,7 +27,7 @@ public class MainScreenController {
 	public TitledPane paneModelo;
 	
 	@FXML
-	private TreeView<String> treeViewModelo;
+	public TreeView<String> treeViewModelo;
 	
 	HttpConnectionMethods httpConn = new HttpConnectionMethods();
 	public List<String> linhaData = new ArrayList<String>();
@@ -57,27 +58,27 @@ public class MainScreenController {
 	public void initialize() throws IOException {
 		startScreen();		
 	}
-		
-	 
+	 	
+	public void startScreen() throws IOException {
+		loadScreen();
+	}
+	
 	public void loadScreen() throws IOException {
 		paneModelo.setExpanded(false);
 		paneModelo.setDisable(true);
 		
 		linhaData.clear();
 		
-		medidorData = httpConn.sendGET();
+		medidorData = httpConn.restGET();
 		
 		for(MedidorJson medidorA : medidorData) {
 			if(!linhaData.contains(medidorA.getLinha())) {			
 				linhaData.add(medidorA.getLinha());
 				nLinha++;
 			}
-		}		 
+		}		
+		
 		comboBoxLinha.setItems(FXCollections.observableArrayList(linhaData));
-	}
-	 	
-	public void startScreen() throws IOException {
-		loadScreen();
 	}
 	
 	public void loadTreeView() {

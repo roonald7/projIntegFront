@@ -4,11 +4,13 @@ import static org.junit.Assert.*;
 
 import org.junit.Ignore;
 import org.junit.Test;
+import org.mockito.internal.matchers.NotNull;
 import org.powermock.api.mockito.PowerMockito;
 import org.testfx.framework.junit.ApplicationTest;
 
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TitledPane;
+import javafx.scene.control.TreeView;
 import main.java.util.HttpConnectionMethods;
 
 import static org.mockito.Mockito.spy;
@@ -29,7 +31,6 @@ public class MainScreenControllerTest extends ApplicationTest{
 		verify(msc, times(1)).startScreen();
 	}
 	
-	@Ignore
 	@Test
 	public void testLoadScreen1() throws IOException {
 		msc.comboBoxLinha = new ComboBox<String>();
@@ -42,7 +43,6 @@ public class MainScreenControllerTest extends ApplicationTest{
 		
 	}
 	
-	@Ignore
 	@Test
 	public void testLoadScreen2() throws IOException {
 		msc.comboBoxLinha = new ComboBox<String>();
@@ -53,7 +53,46 @@ public class MainScreenControllerTest extends ApplicationTest{
 		assertEquals(3, msc.linhaData.size());
 	}
 	
-	@Ignore
+	@Test
+	public void testLoadScreen3() throws IOException {
+		msc.comboBoxLinha = new ComboBox<String>();
+		msc.paneModelo = new TitledPane();
+		
+		msc.loadScreen();
+		
+		if(msc.comboBoxLinha.getSelectionModel().getSelectedItem() == null) {
+			assertEquals("Checking if PaneModel is disable when ComboBox is Clear", true, msc.paneModelo.isDisable());
+		}
+	}
+	
+	@Test
+	public void testLoadTreeView1() throws IOException {
+		msc.comboBoxLinha = new ComboBox<String>();
+		msc.paneModelo = new TitledPane();
+		msc.treeViewModelo = new TreeView<String>();
+		
+		msc.loadScreen();
+		msc.comboBoxLinha.getSelectionModel().select("ZEUS");
+		
+		msc.loadTreeView();
+		
+		assertEquals("Checking if Root is the same as ComboBox selection","ZEUS", msc.treeViewModelo.getRoot().getValue().toString());
+	}
+	
+	@Test
+	public void testLoadTreeView2() throws IOException {
+		msc.comboBoxLinha = new ComboBox<String>();
+		msc.paneModelo = new TitledPane();
+		msc.treeViewModelo = new TreeView<String>();
+		
+		msc.loadScreen();
+		msc.comboBoxLinha.getSelectionModel().select("ZEUS");
+		
+		msc.loadTreeView();
+		
+		assertNotNull("Checking if Root is the same as ComboBox selection", msc.treeViewModelo.getRoot().getChildren().get(0).getValue());
+	}
+	
 	@Test
 	public void testRefreshDataBase() throws IOException {		
 		
@@ -66,6 +105,21 @@ public class MainScreenControllerTest extends ApplicationTest{
 		msc.refreshDataBase();
 		
 		verify(msc, times(1)).loadScreen();
+	}
+	
+	@Test
+	public void testLineOptionSelect() throws IOException {
+		msc.comboBoxLinha = new ComboBox<String>();
+		msc.paneModelo = new TitledPane();
+		
+		PowerMockito.doNothing().when(msc).loadTreeView();
+				
+		msc.comboBoxLinha.getSelectionModel().select("ZEUS");
+		
+		msc.loadScreen();
+		msc.lineOptionSelect();
+	
+		verify(msc, times(1)).loadTreeView();
 	}
 	
 

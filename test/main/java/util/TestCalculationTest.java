@@ -33,8 +33,6 @@ public class TestCalculationTest {
 		int a = Integer.MIN_VALUE;
 		int b = Integer.MAX_VALUE;
 		
-		System.out.println(a);
-		System.out.println(b);
 		assertEquals(-1, ts.soma(a, b));
 	}
 

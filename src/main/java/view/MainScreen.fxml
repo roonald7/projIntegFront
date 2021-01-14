@@ -33,7 +33,7 @@
           </TitledPane>
         </panes>
       </Accordion>
-      <Label layoutX="14.0" layoutY="14.0" text="PROJETO INTEGRAÇÃO (3)">
+      <Label layoutX="14.0" layoutY="14.0" text="PROJETO INTEGRAÇÃO">
          <font>
             <Font size="24.0" />
          </font>
