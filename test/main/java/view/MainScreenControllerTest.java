@@ -10,7 +10,6 @@ import org.testfx.framework.junit.ApplicationTest;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.TreeView;
-import main.java.util.HttpConnectionMethods;
 
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.times;
@@ -20,8 +19,7 @@ import java.io.IOException;
 
 public class MainScreenControllerTest extends ApplicationTest{
 	
-	public MainScreenController msc = spy(MainScreenController.class);
-	public HttpConnectionMethods hcm = spy(HttpConnectionMethods.class);
+	private MainScreenController msc = spy(MainScreenController.class);
 	
 	@Test
 	public void testInitialize() throws IOException {		
