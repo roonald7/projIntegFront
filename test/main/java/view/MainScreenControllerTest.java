@@ -31,7 +31,7 @@ public class MainScreenControllerTest extends ApplicationTest{
 		verify(msc, times(1)).startScreen();
 	}
 	
-	@Test
+	/*@Test
 	public void testLoadScreen1() throws IOException {
 		msc.comboBoxLinha = new ComboBox<String>();
 		msc.paneModelo = new TitledPane();
@@ -40,18 +40,7 @@ public class MainScreenControllerTest extends ApplicationTest{
 		msc.loadScreen();
 		
 		assertTrue(msc.linhaData.size()>0);
-		
-	}
-	
-	@Test
-	public void testLoadScreen2() throws IOException {
-		msc.comboBoxLinha = new ComboBox<String>();
-		msc.paneModelo = new TitledPane();
-		
-		msc.loadScreen();
-		
-		assertEquals(3, msc.linhaData.size());
-	}
+	}*/
 	
 	@Test
 	public void testLoadScreen3() throws IOException {
@@ -90,7 +79,7 @@ public class MainScreenControllerTest extends ApplicationTest{
 		
 		msc.loadTreeView();
 		
-		assertNotNull("Checking if Root is the same as ComboBox selection", msc.treeViewModelo.getRoot().getChildren().get(0).getValue());
+		assertNotNull("Checking if there is any Children inside TreeView", msc.treeViewModelo.getRoot().getChildren().get(0).getValue());
 	}
 	
 	@Test

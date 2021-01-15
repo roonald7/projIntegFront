@@ -65,7 +65,6 @@ public class HttpConnectionMethods {
 		byte[] out = jsonObj.getBytes(StandardCharsets.UTF_8);
 		int length = out.length;
 		
-		System.out.println(jsonObj);
 		// For POST only - START
 		con.setDoOutput(true);
 
@@ -76,8 +75,6 @@ public class HttpConnectionMethods {
 			os.flush();
 			os.close();
 		}
-		
-		// For POST only - END
 
 		int responseCode = con.getResponseCode();
 		System.out.println("POST Response Code :: " + responseCode);

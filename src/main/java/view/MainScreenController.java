@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
@@ -56,6 +58,10 @@ public class MainScreenController {
 	
 	@FXML
 	public void initialize() throws IOException {
+		MedidorToJson newMedidor = new MedidorToJson("CHRONOS", "800000", "g3nerationX");
+		
+		httpConn.restPOST(newMedidor);
+		
 		startScreen();		
 	}
 	 	
