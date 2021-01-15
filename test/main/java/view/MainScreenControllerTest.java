@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import org.junit.Ignore;
 import org.junit.Test;
-import org.mockito.internal.matchers.NotNull;
 import org.powermock.api.mockito.PowerMockito;
 import org.testfx.framework.junit.ApplicationTest;
 
@@ -31,24 +30,12 @@ public class MainScreenControllerTest extends ApplicationTest{
 		verify(msc, times(1)).startScreen();
 	}
 	
-	/*@Test
+	@Test
 	public void testLoadScreen1() throws IOException {
 		msc.comboBoxLinha = new ComboBox<String>();
 		msc.paneModelo = new TitledPane();
-		msc.paneLinha = new TitledPane();
 		
 		msc.loadScreen();
-		
-		assertTrue(msc.linhaData.size()>0);
-	}*/
-	
-	@Test
-	public void testLoadScreen3() throws IOException {
-		msc.comboBoxLinha = new ComboBox<String>();
-		msc.paneModelo = new TitledPane();
-		
-		msc.loadScreen();
-		
 		if(msc.comboBoxLinha.getSelectionModel().getSelectedItem() == null) {
 			assertEquals("Checking if PaneModel is disable when ComboBox is Clear", true, msc.paneModelo.isDisable());
 		}

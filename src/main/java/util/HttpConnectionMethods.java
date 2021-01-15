@@ -20,11 +20,9 @@ import main.java.entity.MedidorToJson;
 public class HttpConnectionMethods {
 	
 	private static final String GET_URL = "http://localhost:8080/api/medidores";
-
 	private static final String POST_URL = "http://localhost:8080/api/medidor";
 	
 	private static final String REST_GET = "GET";
-	
 	private static final String REST_POST = "POST";
 	
 	public List<MedidorJson> restGET() throws IOException {
@@ -65,7 +63,6 @@ public class HttpConnectionMethods {
 		byte[] out = jsonObj.getBytes(StandardCharsets.UTF_8);
 		int length = out.length;
 		
-		// For POST only - START
 		con.setDoOutput(true);
 
 		con.setFixedLengthStreamingMode(length);
@@ -90,7 +87,6 @@ public class HttpConnectionMethods {
 			}
 			in.close();
 
-			// print result
 			System.out.println(response.toString());
 		} else {
 			System.out.println("POST request not worked");
