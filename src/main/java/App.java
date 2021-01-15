@@ -7,6 +7,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import main.java.entity.MedidorToJson;
+import main.java.util.HttpConnectionMethods;
+import main.java.util.RestTestClient;
 import main.java.view.MainScreenController;
 
 public class App extends Application {
@@ -41,6 +44,10 @@ public class App extends Application {
 	}
 
 	public static void main(String[] args) {
+		
+		MedidorToJson medidor1 = new MedidorToJson("ARES","ZEUS","CHRONOS");
+		HttpConnectionMethods.restPOST(medidor1);
+		
 		launch(args);
 		System.exit(0);
 	}

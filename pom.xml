@@ -111,6 +111,11 @@ xmlns="http://maven.apache.org/POM/4.0.0">
 		<version>4.0.14-alpha</version>
 		<scope>test</scope>
 	</dependency>
+	<dependency>
+		<groupId>org.jboss.resteasy</groupId>
+		<artifactId>resteasy-client</artifactId>
+		<version>3.0.13.Final</version>
+	</dependency>
   	<!--dependency>
   		<groupId>com.energy.eletra</groupId>
 		<artifactId>projIntegBack</artifactId>
