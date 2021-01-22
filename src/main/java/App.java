@@ -7,16 +7,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import main.java.entity.MedidorToJson;
-import main.java.util.HttpConnectionMethods;
-import main.java.util.RestTestClient;
-import main.java.view.MainScreenController;
 
 public class App extends Application {
 
-	private Stage primaryStage;
-	private AnchorPane rootLayout;
-	
+	public Stage primaryStage;
+	public AnchorPane rootLayout;
+	public static final String stageTitle = "INTEGRATION PROJECT";
 	@Override
 	public void start(Stage primaryStage) {
 		this.primaryStage = primaryStage;
@@ -36,18 +32,12 @@ public class App extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 			
-			MainScreenController controller = loader.getController();
-			controller.setMain(this);
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public static void main(String[] args) {
-		
-		MedidorToJson medidor1 = new MedidorToJson("ARES","ZEUS","CHRONOS");
-		HttpConnectionMethods.restPOST(medidor1);
-		
 		launch(args);
 		System.exit(0);
 	}

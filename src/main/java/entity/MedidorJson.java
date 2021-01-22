@@ -15,7 +15,7 @@ public class MedidorJson {
 		this.modelo = modelo;
 		this.categoria = categoria;
 	}
-
+	
 	public long getId() {
 		return id;
 	}

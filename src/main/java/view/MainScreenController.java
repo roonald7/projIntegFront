@@ -10,7 +10,8 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import main.java.App;
+import main.java.connection.MedidorDao;
+import main.java.connection.MedidorService;
 import main.java.entity.MedidorJson;
 import main.java.util.HttpConnectionMethods;
 
@@ -28,6 +29,7 @@ public class MainScreenController {
 	@FXML
 	public TreeView<String> treeViewModelo;
 	
+	
 	HttpConnectionMethods httpConn = new HttpConnectionMethods();
 	public List<String> linhaData = new ArrayList<String>();
 	
@@ -36,13 +38,9 @@ public class MainScreenController {
 	
 	private List<MedidorJson> medidorData = null;
 	
-	 
-	public void setMain(App mainApp) {
-	}
-	
 	@FXML
     void lineOptionSelect() {
-		if(comboBoxLinha.getSelectionModel().getSelectedItem() != null)
+//		if(comboBoxLinha.getSelectionModel().getSelectedItem() != null)
 			loadTreeView();
     }
 	
