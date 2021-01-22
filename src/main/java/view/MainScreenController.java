@@ -10,8 +10,6 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TitledPane;
 import javafx.scene.control.TreeItem;
 import javafx.scene.control.TreeView;
-import main.java.connection.MedidorDao;
-import main.java.connection.MedidorService;
 import main.java.entity.MedidorJson;
 import main.java.util.HttpConnectionMethods;
 
@@ -40,7 +38,7 @@ public class MainScreenController {
 	
 	@FXML
     void lineOptionSelect() {
-//		if(comboBoxLinha.getSelectionModel().getSelectedItem() != null)
+		if(comboBoxLinha.getSelectionModel().getSelectedItem() != null)
 			loadTreeView();
     }
 	
